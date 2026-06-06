@@ -17,14 +17,14 @@
   <meta property="og:site_name" content="Velmora Lace" />
   <meta property="og:title" content="Velmora Lace | Luxury Lingerie Manufacturer & OEM/ODM Supplier" />
   <meta property="og:description" content="Premium private-label lingerie manufacturer. OEM/ODM for lace, mesh, silk & couture intimates. Low MOQ, fast sampling, worldwide shipping." />
-  <meta property="og:image" content="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" />
-  <meta property="og:url" content="https://velmoralace.com/" />
+  <meta property="og:image" content="<https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png>" />
+  <meta property="og:url" content="<https://velmoralace.com/>" />
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Velmora Lace | Luxury Lingerie Manufacturer" />
   <meta name="twitter:description" content="Premium private-label lingerie manufacturer. OEM/ODM, low MOQ, worldwide shipping." />
-  <meta name="twitter:image" content="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" />
+  <meta name="twitter:image" content="<https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png>" />
 
   <!-- Favicon (inline SVG: gold V on dark) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c0a0b'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23c6a35a' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E" />
@@ -103,7 +103,7 @@
       position: relative;
       background:
         linear-gradient(90deg, rgba(12,10,11,0.96) 0%, rgba(12,10,11,0.55) 55%, rgba(12,10,11,0.25) 100%),
-        url('https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png');
+        url('<https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png'>);
       background-size: cover; background-position: center right;
     }
     .hero-content { max-width: 620px; }
@@ -281,13 +281,23 @@
     .faq-item.open .plus { transform: rotate(45deg); }
     .faq-q .plus { transition: 0.3s; display: inline-block; }
 
-    /* Hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
-    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: 0.3s; }
+    /* Hamburger with active transition */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; z-index: 1001; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: 0.3s; transform-origin: center; }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     .mobile-menu { display: none; position: fixed; top: 88px; left: 0; right: 0; background: rgba(12,10,11,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 999; padding: 20px 0; }
     .mobile-menu.open { display: block; }
     .mobile-menu a { display: block; padding: 14px 30px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .mobile-menu a:hover { color: var(--gold); }
+
+    /* Custom Luxury Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-soft); }
 
     @media (max-width: 968px) {
       .nav-links { display: none; }
@@ -323,18 +333,24 @@
       </ul>
       <div class="nav-actions">
         <a href="#contact" class="btn btn-gold" style="padding: 12px 26px;">Get a Quote</a>
-        <span class="globe">&#9788;</span>
-        <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+        <span class="globe" aria-label="Select Language" title="Select Language" style="display: inline-flex; align-items: center;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </span>
+        <div class="hamburger" onclick="toggleMenu()">
           <span></span><span></span><span></span>
         </div>
       </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#" onclick="document.getElementById('mobileMenu').classList.remove('open')">Home</a>
-      <a href="#collections" onclick="document.getElementById('mobileMenu').classList.remove('open')">Collections</a>
-      <a href="#oem" onclick="document.getElementById('mobileMenu').classList.remove('open')">OEM / ODM</a>
-      <a href="#factory" onclick="document.getElementById('mobileMenu').classList.remove('open')">Atelier</a>
-      <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+      <a href="#" onclick="toggleMenu()">Home</a>
+      <a href="#collections" onclick="toggleMenu()">Collections</a>
+      <a href="#oem" onclick="toggleMenu()">OEM / ODM</a>
+      <a href="#factory" onclick="toggleMenu()">Atelier</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
     </div>
   </nav>
 
@@ -344,7 +360,7 @@
       <div class="hero-content">
         <p class="eyebrow">Private Label Lingerie Manufacturer</p>
         <h1>Where Sensuality <em>Meets</em> Craftsmanship</h1>
-        <p>From delicate lace to liquid silk 鈥?we manufacture couture-grade intimates for the world's most discerning lingerie brands. OEM / ODM, low MOQ, uncompromising quality.</p>
+        <p>From delicate lace to liquid silk &mdash; we manufacture couture-grade intimates for the world's most discerning lingerie brands. OEM / ODM, low MOQ, uncompromising quality.</p>
         <div class="hero-btns">
           <a href="#contact" class="btn btn-gold">Request a Quote</a>
           <a href="#collections" class="btn btn-ghost">View Collections</a>
@@ -359,7 +375,7 @@
     <div class="container trust-grid">
       <div class="trust-item"><div class="ico">&#10022;</div><h4>OEM / ODM</h4><p>Full custom development</p></div>
       <div class="trust-item"><div class="ico">&#9826;</div><h4>Low MOQ</h4><p>Flexible order quantities</p></div>
-      <div class="trust-item"><div class="ico">&#9201;</div><h4>5鈥? Day Sampling</h4><p>Rapid prototyping</p></div>
+      <div class="trust-item"><div class="ico">&#9201;</div><h4>5-7 Day Sampling</h4><p>Rapid prototyping</p></div>
       <div class="trust-item"><div class="ico">&#9788;</div><h4>Worldwide Shipping</h4><p>Discreet & reliable</p></div>
     </div>
   </div>
@@ -384,19 +400,19 @@
       </div>
       <div class="col-grid">
         <div class="col-card" onclick="document.getElementById('m1').classList.add('open')">
-          <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Lace Babydoll" /></div>
+          <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Lace Babydoll" loading="lazy" /></div>
           <div class="col-overlay"><h3>Lace Babydoll</h3><p>Discover &rarr;</p></div>
         </div>
         <div class="col-card" onclick="document.getElementById('m2').classList.add('open')">
-          <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Mesh Bodysuit" /></div>
+          <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Mesh Bodysuit" loading="lazy" /></div>
           <div class="col-overlay"><h3>Mesh Bodysuit</h3><p>Discover &rarr;</p></div>
         </div>
         <div class="col-card" onclick="document.getElementById('m3').classList.add('open')">
-          <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Ac5a1b177c97a4e01bd32f77071b593609.png" alt="Lace Lingerie Sets" /></div>
+          <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Ac5a1b177c97a4e01bd32f77071b593609.png" alt="Lace Lingerie Sets" loading="lazy" /></div>
           <div class="col-overlay"><h3>Lingerie Sets</h3><p>Discover &rarr;</p></div>
         </div>
         <div class="col-card" onclick="document.getElementById('m4').classList.add('open')">
-          <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/A395fb394ba9a47a294a290869b2cfe99B.png" alt="Silk Sleepwear" /></div>
+          <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/A395fb394ba9a47a294a290869b2cfe99B.png" alt="Silk Sleepwear" loading="lazy" /></div>
           <div class="col-overlay"><h3>Silk Sleepwear</h3><p>Discover &rarr;</p></div>
         </div>
       </div>
@@ -407,12 +423,12 @@
   <section class="oem" id="oem">
     <div class="container oem-grid">
       <div class="oem-img">
-        <img src="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" alt="OEM ODM Customization" />
+        <img src="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" alt="OEM ODM Customization" loading="lazy" />
       </div>
       <div class="oem-content">
         <p class="eyebrow">Build Your Brand</p>
         <h2>OEM / ODM <em>Customization</em></h2>
-        <p>From a single sketch to a full collection 鈥?we turn your vision into beautifully finished intimates, with complete private-label support at every step.</p>
+        <p>From a single sketch to a full collection &mdash; we turn your vision into beautifully finished intimates, with complete private-label support at every step.</p>
         <div class="oem-list">
           <div class="oem-item"><span class="n">01</span><div><h4>Custom Logo &amp; Label</h4><p>Woven, satin or print</p></div></div>
           <div class="oem-item"><span class="n">02</span><div><h4>Custom Fabrics</h4><p>Lace, silk, mesh, satin</p></div></div>
@@ -436,13 +452,13 @@
       </div>
       <div class="factory-grid">
         <div class="factory-gallery">
-          <img src="https://sc02.alicdn.com/kf/Abc86cb8a2d1246d78d1494750fe55f4fI.png" alt="Stitching" />
-          <img src="https://sc02.alicdn.com/kf/A569f31fa78384b3eb1c6e9f2f9ef80ccR.png" alt="Pattern Cutting" />
-          <img src="https://sc02.alicdn.com/kf/A0e8386d8b1fb47c49f32eb52585c4334V.png" alt="Quality Control" />
-          <img src="https://sc02.alicdn.com/kf/A8403e01ca419487bbfe028ceba0f4287P.png" alt="Finished Goods" />
+          <img src="https://sc02.alicdn.com/kf/Abc86cb8a2d1246d78d1494750fe55f4fI.png" alt="Stitching" loading="lazy" />
+          <img src="https://sc02.alicdn.com/kf/A569f31fa78384b3eb1c6e9f2f9ef80ccR.png" alt="Pattern Cutting" loading="lazy" />
+          <img src="https://sc02.alicdn.com/kf/A0e8386d8b1fb47c49f32eb52585c4334V.png" alt="Quality Control" loading="lazy" />
+          <img src="https://sc02.alicdn.com/kf/A8403e01ca419487bbfe028ceba0f4287P.png" alt="Finished Goods" loading="lazy" />
         </div>
         <div class="factory-main">
-          <img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Atelier" />
+          <img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Atelier" loading="lazy" />
         </div>
       </div>
       <div class="factory-text">
@@ -450,7 +466,7 @@
           <li><span class="ico">&#10022;</span> Dedicated partner factories specialised in fine lingerie.</li>
           <li><span class="ico">&#10022;</span> Skilled artisans &amp; advanced precision equipment.</li>
           <li><span class="ico">&#10022;</span> Strict QC from raw material to final inspection.</li>
-          <li><span class="ico">&#10022;</span> Sampling 5鈥? days 路 Bulk 15鈥?5 days.</li>
+          <li><span class="ico">&#10022;</span> Sampling 5-7 days &middot; Bulk 15-25 days.</li>
           <li><span class="ico">&#10022;</span> Materials: lace, mesh, silk, satin, nylon, spandex.</li>
           <li><span class="ico">&#10022;</span> Confidential, discreet handling of every order.</li>
         </ul>
@@ -559,19 +575,19 @@
           <div class="faq-list">
             <div class="faq-item" onclick="this.classList.toggle('open')">
               <div class="faq-q"><h4>What is your minimum order quantity (MOQ)?</h4><span class="plus">+</span></div>
-              <div class="faq-a"><p>Our standard MOQ is flexible and depends on the style and customization level. We welcome small trial orders for new partners 鈥?contact us for a tailored quote.</p></div>
+              <div class="faq-a"><p>Our standard MOQ is flexible and depends on the style and customization level. We welcome small trial orders for new partners &mdash; contact us for a tailored quote.</p></div>
             </div>
             <div class="faq-item" onclick="this.classList.toggle('open')">
               <div class="faq-q"><h4>Can I order a sample before bulk production?</h4><span class="plus">+</span></div>
-              <div class="faq-a"><p>Absolutely. We provide pre-production samples for your approval. Sampling typically takes 5鈥? days before we proceed to bulk.</p></div>
+              <div class="faq-a"><p>Absolutely. We provide pre-production samples for your approval. Sampling typically takes 5-7 days before we proceed to bulk.</p></div>
             </div>
             <div class="faq-item" onclick="this.classList.toggle('open')">
               <div class="faq-q"><h4>What is your typical production lead time?</h4><span class="plus">+</span></div>
-              <div class="faq-a"><p>Sampling: 5鈥? days. Bulk production: 15鈥?5 days depending on order quantity and complexity.</p></div>
+              <div class="faq-a"><p>Sampling: 5-7 days. Bulk production: 15-25 days depending on order quantity and complexity.</p></div>
             </div>
             <div class="faq-item" onclick="this.classList.toggle('open')">
               <div class="faq-q"><h4>Do you offer full OEM / ODM services?</h4><span class="plus">+</span></div>
-              <div class="faq-a"><p>Yes 鈥?from custom logos, labels and fabrics to complete style development and private-label packaging. Your brand, our craftsmanship.</p></div>
+              <div class="faq-a"><p>Yes &mdash; from custom logos, labels and fabrics to complete style development and private-label packaging. Your brand, our craftsmanship.</p></div>
             </div>
             <div class="faq-item" onclick="this.classList.toggle('open')">
               <div class="faq-q"><h4>Do you ship worldwide and discreetly?</h4><span class="plus">+</span></div>
@@ -579,7 +595,7 @@
             </div>
             <div class="faq-item" onclick="this.classList.toggle('open')">
               <div class="faq-q"><h4>Can you create custom luxury packaging?</h4><span class="plus">+</span></div>
-              <div class="faq-a"><p>Yes. We offer fully custom, gift-ready luxury packaging 鈥?boxes, tissue, hang tags and branded inserts to match your brand identity.</p></div>
+              <div class="faq-a"><p>Yes. We offer fully custom, gift-ready luxury packaging &mdash; boxes, tissue, hang tags and branded inserts to match your brand identity.</p></div>
             </div>
           </div>
         </div>
@@ -628,27 +644,12 @@
       <div class="footer-brand">
         <a href="/" class="brand">VELMORA LACE<small>LUXURY LINGERIE ATELIER</small></a>
         <p>A trusted private-label lingerie manufacturer crafting couture-grade intimates for luxury brands worldwide.</p>
-        <div class="socials">
-          <a href="#">f</a><a href="#">in</a><a href="#">&#9788;</a><a href="#">&#9993;</a>
-        </div>
-      </div>
-      <div class="footer-col"><h4>Explore</h4><ul><li>Home</li><li>Collections</li><li>OEM / ODM</li><li>The Atelier</li><li>Contact</li></ul></div>
-      <div class="footer-col"><h4>Collections</h4><ul><li>Lace Babydolls</li><li>Bodysuits</li><li>Lingerie Sets</li><li>Silk Sleepwear</li><li>Bridal</li></ul></div>
-      <div class="footer-col"><h4>Information</h4><ul><li>Why Choose Us</li><li>Quality Control</li><li>Shipping &amp; Delivery</li><li>FAQ</li></ul></div>
-    </div>
-    <div class="copyright">漏 2026 VELMORA LACE 路 Luxury Lingerie Atelier 路 All Rights Reserved.</div>
-  </footer>
-
-  <!-- LOOKBOOK MODALS -->
-  <div class="modal" id="m1"><div class="modal-box"><span class="modal-close" onclick="this.closest('.modal').classList.remove('open')">&times;</span><h3>Lace <em>Babydoll</em></h3><p class="sub">Soft lace, flattering cuts, custom packaging on request.</p><div class="modal-gallery"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Lace Babydoll"><img src="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" alt="Lace Babydoll"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Lace Babydoll"></div><a href="#contact" class="btn btn-gold" onclick="this.closest('.modal').classList.remove('open')">Request a Quote</a></div></div>
-  <div class="modal" id="m2"><div class="modal-box"><span class="modal-close" onclick="this.closest('.modal').classList.remove('open')">&times;</span><h3>Mesh <em>Bodysuit</em></h3><p class="sub">On-trend silhouettes for fast-moving collections.</p><div class="modal-gallery"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Mesh Bodysuit"><img src="https://sc02.alicdn.com/kf/Ac5a1b177c97a4e01bd32f77071b593609.png" alt="Mesh Bodysuit"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Mesh Bodysuit"></div><a href="#contact" class="btn btn-gold" onclick="this.closest('.modal').classList.remove('open')">Request a Quote</a></div></div>
-  <div class="modal" id="m3"><div class="modal-box"><span class="modal-close" onclick="this.closest('.modal').classList.remove('open')">&times;</span><h3>Lingerie <em>Sets</em></h3><p class="sub">Classic and premium looks for branded retail.</p><div class="modal-gallery"><img src="https://sc02.alicdn.com/kf/Ac5a1b177c97a4e01bd32f77071b593609.png" alt="Lingerie Sets"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Lingerie Sets"><img src="https://sc02.alicdn.com/kf/A395fb394ba9a47a294a290869b2cfe99B.png" alt="Lingerie Sets"></div><a href="#contact" class="btn btn-gold" onclick="this.closest('.modal').classList.remove('open')">Request a Quote</a></div></div>
-  <div class="modal" id="m4"><div class="modal-box"><span class="modal-close" onclick="this.closest('.modal').classList.remove('open')">&times;</span><h3>Silk <em>Sleepwear</em></h3><p class="sub">Elegant sleepwear with full OEM/ODM support.</p><div class="modal-gallery"><img src="https://sc02.alicdn.com/kf/A395fb394ba9a47a294a290869b2cfe99B.png" alt="Silk Sleepwear"><img src="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" alt="Silk Sleepwear"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Silk Sleepwear"></div><a href="#contact" class="btn btn-gold" onclick="this.closest('.modal').classList.remove('open')">Request a Quote</a></div></div>
-  <script>document.querySelectorAll('.modal').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('open');});});</script>
-
-  <a href="https://wa.me/8615390957678" class="wa-float" target="_blank" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.376L1.05 31.3l6.13-1.96A15.9 15.9 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.31 22.594c-.386 1.09-1.92 1.994-3.142 2.258-.836.178-1.928.32-5.606-1.204-4.706-1.95-7.736-6.732-7.972-7.042-.226-.31-1.902-2.532-1.902-4.83s1.17-3.43 1.586-3.898c.342-.386.746-.562 1.198-.562.146 0 .278.008.396.014.342.014.514.034.74.574.282.674.964 2.336 1.046 2.508.084.172.166.404.05.638-.108.24-.204.346-.376.546-.172.2-.336.354-.508.568-.156.186-.334.388-.136.726.198.33.882 1.454 1.894 2.356 1.306 1.164 2.378 1.524 2.756 1.682.282.118.616.09.82-.124.26-.276.578-.736.902-1.19.23-.324.522-.364.83-.25.31.108 1.964.926 2.302 1.094.338.17.562.252.646.394.084.146.084.836-.302 1.926z"/></svg>
-  </a>
-
-</body>
-</html>
+        <div class="socials" style="margin-top: 24px;">
+          <a href="#" aria-label="Facebook" style="display: inline-flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 3.191 4.919 4.85.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 1.656-1.664 4.702-4.919 4.85-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-3.209-4.919-4.85-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-1.654 1.664-4.7 4.919-4.85 1.265-.057 1.
