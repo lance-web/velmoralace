@@ -198,10 +198,50 @@
     .footer-col li:hover { color: var(--white); }
     .copyright { border-top: 1px solid var(--border); padding-top: 35px; text-align: center; font-size: 11px; color: var(--muted-2); letter-spacing: 0.08em; }
 
-    .wa-float { position: fixed; bottom: 32px; right: 32px; width: 58px; height: 58px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 9999; box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+    .wa-float { position: fixed; bottom: 32px; right: 32px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 9999; box-shadow: 0 6px 24px rgba(0,0,0,0.4); transition: 0.3s; }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* STATS BAR */
+    .stats { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-item { padding: 60px 25px; text-align: center; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
+    .stat-item .num { font-family: 'Cormorant Garamond'; font-size: 52px; color: var(--gold); line-height: 1; margin-bottom: 10px; }
+    .stat-item p { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+    /* CERTIFICATIONS */
+    .certs { padding: 70px 0; background: var(--bg-soft); }
+    .certs-inner { text-align: center; }
+    .certs-inner .eyebrow { margin-bottom: 30px; }
+    .certs-row { display: flex; justify-content: center; align-items: center; gap: 55px; flex-wrap: wrap; }
+    .cert-badge { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0.75; transition: 0.3s; }
+    .cert-badge:hover { opacity: 1; }
+    .cert-badge .c-ring { width: 70px; height: 70px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond'; font-size: 13px; font-weight: 600; color: var(--gold); text-align: center; line-height: 1.2; letter-spacing: 0.05em; }
+    .cert-badge span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+    /* FAQ accordion */
+    .faq-item .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+    .faq-item .faq-a p { font-size: 13px; color: var(--muted); font-weight: 300; padding-top: 14px; }
+    .faq-item.open .faq-a { max-height: 200px; }
+    .faq-item.open .plus { transform: rotate(45deg); }
+    .faq-q .plus { transition: 0.3s; display: inline-block; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 88px; left: 0; right: 0; background: rgba(12,10,11,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 999; padding: 20px 0; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 14px 30px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .mobile-menu a:hover { color: var(--gold); }
 
     @media (max-width: 968px) {
       .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item { padding: 40px 15px; }
+      .certs-row { gap: 30px; }
       .hero { background-position: center; }
       .trust-grid { grid-template-columns: 1fr 1fr; }
       .trust-item:nth-child(2) { border-right: none; }
@@ -230,7 +270,17 @@
       <div class="nav-actions">
         <a href="#contact" class="btn btn-gold" style="padding: 12px 26px;">Get a Quote</a>
         <span class="globe">&#9788;</span>
+        <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+          <span></span><span></span><span></span>
+        </div>
       </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#" onclick="document.getElementById('mobileMenu').classList.remove('open')">Home</a>
+      <a href="#collections" onclick="document.getElementById('mobileMenu').classList.remove('open')">Collections</a>
+      <a href="#oem" onclick="document.getElementById('mobileMenu').classList.remove('open')">OEM / ODM</a>
+      <a href="#factory" onclick="document.getElementById('mobileMenu').classList.remove('open')">Atelier</a>
+      <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
     </div>
   </nav>
 
@@ -256,6 +306,16 @@
       <div class="trust-item"><div class="ico">&#9826;</div><h4>Low MOQ</h4><p>Flexible order quantities</p></div>
       <div class="trust-item"><div class="ico">&#9201;</div><h4>5–7 Day Sampling</h4><p>Rapid prototyping</p></div>
       <div class="trust-item"><div class="ico">&#9788;</div><h4>Worldwide Shipping</h4><p>Discreet & reliable</p></div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="container stats-grid">
+      <div class="stat-item"><div class="num">10+</div><p>Years of Expertise</p></div>
+      <div class="stat-item"><div class="num">5000m&sup2;</div><p>Production Facility</p></div>
+      <div class="stat-item"><div class="num">50+</div><p>Countries Served</p></div>
+      <div class="stat-item"><div class="num">200K+</div><p>Pieces / Month</p></div>
     </div>
   </div>
 
@@ -343,6 +403,20 @@
     </div>
   </section>
 
+  <!-- CERTIFICATIONS -->
+  <div class="certs">
+    <div class="container certs-inner">
+      <p class="eyebrow">Certified Quality &amp; Compliance</p>
+      <div class="certs-row">
+        <div class="cert-badge"><div class="c-ring">OEKO<br/>TEX</div><span>Standard 100</span></div>
+        <div class="cert-badge"><div class="c-ring">BSCI</div><span>Social Audit</span></div>
+        <div class="cert-badge"><div class="c-ring">ISO<br/>9001</div><span>Quality Mgmt</span></div>
+        <div class="cert-badge"><div class="c-ring">SGS</div><span>Tested</span></div>
+        <div class="cert-badge"><div class="c-ring">CE</div><span>Compliant</span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- SERVE -->
   <section class="serve">
     <div class="container">
@@ -391,27 +465,49 @@
         <div>
           <h3 style="font-size: 30px; margin-bottom: 10px;">Frequently Asked</h3>
           <div class="faq-list">
-            <div class="faq-item"><div class="faq-q"><h4>What is your minimum order quantity (MOQ)?</h4><span class="plus">+</span></div></div>
-            <div class="faq-item"><div class="faq-q"><h4>Can I order a sample before bulk production?</h4><span class="plus">+</span></div></div>
-            <div class="faq-item"><div class="faq-q"><h4>What is your typical production lead time?</h4><span class="plus">+</span></div></div>
-            <div class="faq-item"><div class="faq-q"><h4>Do you offer full OEM / ODM services?</h4><span class="plus">+</span></div></div>
-            <div class="faq-item"><div class="faq-q"><h4>Do you ship worldwide and discreetly?</h4><span class="plus">+</span></div></div>
-            <div class="faq-item"><div class="faq-q"><h4>Can you create custom luxury packaging?</h4><span class="plus">+</span></div></div>
+            <div class="faq-item" onclick="this.classList.toggle('open')">
+              <div class="faq-q"><h4>What is your minimum order quantity (MOQ)?</h4><span class="plus">+</span></div>
+              <div class="faq-a"><p>Our standard MOQ is flexible and depends on the style and customization level. We welcome small trial orders for new partners — contact us for a tailored quote.</p></div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('open')">
+              <div class="faq-q"><h4>Can I order a sample before bulk production?</h4><span class="plus">+</span></div>
+              <div class="faq-a"><p>Absolutely. We provide pre-production samples for your approval. Sampling typically takes 5–7 days before we proceed to bulk.</p></div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('open')">
+              <div class="faq-q"><h4>What is your typical production lead time?</h4><span class="plus">+</span></div>
+              <div class="faq-a"><p>Sampling: 5–7 days. Bulk production: 15–25 days depending on order quantity and complexity.</p></div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('open')">
+              <div class="faq-q"><h4>Do you offer full OEM / ODM services?</h4><span class="plus">+</span></div>
+              <div class="faq-a"><p>Yes — from custom logos, labels and fabrics to complete style development and private-label packaging. Your brand, our craftsmanship.</p></div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('open')">
+              <div class="faq-q"><h4>Do you ship worldwide and discreetly?</h4><span class="plus">+</span></div>
+              <div class="faq-a"><p>We ship to 50+ countries with discreet, confidential packaging and reliable logistics partners (DHL, FedEx, UPS, sea freight).</p></div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('open')">
+              <div class="faq-q"><h4>Can you create custom luxury packaging?</h4><span class="plus">+</span></div>
+              <div class="faq-a"><p>Yes. We offer fully custom, gift-ready luxury packaging — boxes, tissue, hang tags and branded inserts to match your brand identity.</p></div>
+            </div>
           </div>
         </div>
         <div class="form-box">
           <h3>Request a Quote</h3>
           <p>Tell us about your project and we'll respond within 24 hours.</p>
-          <form>
+          <!-- Web3Forms: replace the access_key value with your own free key from https://web3forms.com -->
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+            <input type="hidden" name="subject" value="New Inquiry from Velmora Lace Website" />
+            <input type="hidden" name="from_name" value="Velmora Lace Website" />
             <div class="form-row">
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
+              <input type="text" name="name" placeholder="Name" required />
+              <input type="email" name="email" placeholder="Email" required />
             </div>
             <div class="form-row">
-              <input type="text" placeholder="WhatsApp / Phone" />
-              <input type="text" placeholder="Country" />
+              <input type="text" name="phone" placeholder="WhatsApp / Phone" />
+              <input type="text" name="country" placeholder="Country" />
             </div>
-            <textarea class="full" rows="4" placeholder="Tell us about your project..."></textarea>
+            <textarea class="full" name="message" rows="4" placeholder="Tell us about your project..." required></textarea>
             <button type="submit" class="btn btn-gold" style="width: 100%;">Send Inquiry</button>
           </form>
         </div>
@@ -425,8 +521,10 @@
       <p class="eyebrow">Stay Inspired</p>
       <h3>Receive Our Latest Lookbook</h3>
       <p>Join our trade list for new collections, seasonal trends and exclusive B2B offers.</p>
-      <form class="news-form">
-        <input type="email" placeholder="Your email address" />
+      <form class="news-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+        <input type="hidden" name="subject" value="New Lookbook Subscriber - Velmora Lace" />
+        <input type="email" name="email" placeholder="Your email address" required />
         <button type="submit">Subscribe</button>
       </form>
     </div>
@@ -449,7 +547,10 @@
     <div class="copyright">© 2026 VELMORA LACE · Luxury Lingerie Atelier · All Rights Reserved.</div>
   </footer>
 
-  <a href="https://wa.me/8612345678910" class="wa-float" target="_blank">&#9742;</a>
+  <!-- Replace the phone number below with your real WhatsApp number (country code + number, no +) -->
+  <a href="https://wa.me/8612345678910" class="wa-float" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.376L1.05 31.3l6.13-1.96A15.9 15.9 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.31 22.594c-.386 1.09-1.92 1.994-3.142 2.258-.836.178-1.928.32-5.606-1.204-4.706-1.95-7.736-6.732-7.972-7.042-.226-.31-1.902-2.532-1.902-4.83s1.17-3.43 1.586-3.898c.342-.386.746-.562 1.198-.562.146 0 .278.008.396.014.342.014.514.034.74.574.282.674.964 2.336 1.046 2.508.084.172.166.404.05.638-.108.24-.204.346-.376.546-.172.2-.336.354-.508.568-.156.186-.334.388-.136.726.198.33.882 1.454 1.894 2.356 1.306 1.164 2.378 1.524 2.756 1.682.282.118.616.09.82-.124.26-.276.578-.736.902-1.19.23-.324.522-.364.83-.25.31.108 1.964.926 2.302 1.094.338.17.562.252.646.394.084.146.084.836-.302 1.926z"/></svg>
+  </a>
 
 </body>
 </html>
