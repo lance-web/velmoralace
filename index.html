@@ -3,8 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Velmora Lace | Luxury Lingerie Manufacturer</title>
-  <meta name="description" content="Premium private label lingerie manufacturer. OEM/ODM for lace, silk & couture intimates. Crafted for luxury brands worldwide." />
+
+  <!-- Primary SEO -->
+  <title>Velmora Lace | Luxury Lingerie Manufacturer & OEM/ODM Supplier</title>
+  <meta name="description" content="Velmora Lace is a premium private-label lingerie manufacturer offering OEM/ODM for lace babydolls, mesh bodysuits, lingerie sets & silk sleepwear. Low MOQ, fast sampling, worldwide shipping." />
+  <meta name="keywords" content="lingerie manufacturer, private label lingerie, OEM lingerie, ODM lingerie supplier, lace babydoll wholesale, mesh bodysuit manufacturer, silk sleepwear supplier, custom lingerie factory, plus size lingerie wholesale" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0c0a0b" />
+  <link rel="canonical" href="https://velmoralace.com/" />
+
+  <!-- Open Graph (Facebook, Pinterest, WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Velmora Lace" />
+  <meta property="og:title" content="Velmora Lace | Luxury Lingerie Manufacturer & OEM/ODM Supplier" />
+  <meta property="og:description" content="Premium private-label lingerie manufacturer. OEM/ODM for lace, mesh, silk & couture intimates. Low MOQ, fast sampling, worldwide shipping." />
+  <meta property="og:image" content="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" />
+  <meta property="og:url" content="https://velmoralace.com/" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Velmora Lace | Luxury Lingerie Manufacturer" />
+  <meta name="twitter:description" content="Premium private-label lingerie manufacturer. OEM/ODM, low MOQ, worldwide shipping." />
+  <meta name="twitter:image" content="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" />
+
+  <!-- Favicon (inline SVG: gold V on dark) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c0a0b'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23c6a35a' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -202,6 +225,37 @@
     .wa-float:hover { transform: scale(1.08); }
     .wa-float svg { width: 30px; height: 30px; fill: #fff; }
 
+    /* TESTIMONIALS */
+    .testimonials { background: var(--bg-soft); }
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .test-card { background: var(--bg-card); border: 1px solid var(--border); padding: 40px 35px; }
+    .test-stars { color: var(--gold); font-size: 15px; letter-spacing: 3px; margin-bottom: 20px; }
+    .test-card p { font-family: 'Cormorant Garamond'; font-size: 19px; font-style: italic; line-height: 1.6; color: var(--white); margin-bottom: 28px; }
+    .test-author { display: flex; align-items: center; gap: 14px; }
+    .test-avatar { width: 46px; height: 46px; border-radius: 50%; background: var(--gold); color: var(--bg); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond'; font-size: 20px; font-weight: 600; }
+    .test-author .name { font-size: 13px; font-weight: 600; letter-spacing: 0.03em; }
+    .test-author .role { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+    /* BRAND WALL */
+    .brands { padding: 70px 0; border-top: 1px solid var(--border); }
+    .brands .eyebrow { text-align: center; margin-bottom: 40px; }
+    .brand-row { display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; }
+    .brand-logo { font-family: 'Cormorant Garamond'; font-size: 24px; letter-spacing: 0.1em; color: var(--muted); opacity: 0.6; transition: 0.3s; text-transform: uppercase; }
+    .brand-logo:hover { opacity: 1; color: var(--gold); }
+
+    /* LOOKBOOK MODAL */
+    .modal { display: none; position: fixed; inset: 0; z-index: 10001; background: rgba(8,6,7,0.92); backdrop-filter: blur(6px); overflow-y: auto; padding: 60px 20px; }
+    .modal.open { display: block; }
+    .modal-box { max-width: 1000px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); padding: 50px; position: relative; }
+    .modal-close { position: absolute; top: 22px; right: 26px; font-size: 28px; color: var(--muted); cursor: pointer; line-height: 1; }
+    .modal-close:hover { color: var(--gold); }
+    .modal-box h3 { font-size: 36px; margin-bottom: 6px; }
+    .modal-box h3 em { font-style: italic; color: var(--gold); }
+    .modal-box > .sub { font-size: 13px; color: var(--muted); margin-bottom: 30px; font-weight: 300; }
+    .modal-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 35px; }
+    .modal-gallery img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+    .modal-box .btn { width: 100%; text-align: center; }
+
     /* STATS BAR */
     .stats { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -294,6 +348,7 @@
         <div class="hero-btns">
           <a href="#contact" class="btn btn-gold">Request a Quote</a>
           <a href="#collections" class="btn btn-ghost">View Collections</a>
+          <a href="#contact" class="btn btn-ghost">Download Catalog</a>
         </div>
       </div>
     </div>
@@ -328,19 +383,19 @@
         <div class="divider"><i>VELMORA</i></div>
       </div>
       <div class="col-grid">
-        <div class="col-card">
+        <div class="col-card" onclick="document.getElementById('m1').classList.add('open')">
           <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Lace Babydoll" /></div>
           <div class="col-overlay"><h3>Lace Babydoll</h3><p>Discover &rarr;</p></div>
         </div>
-        <div class="col-card">
+        <div class="col-card" onclick="document.getElementById('m2').classList.add('open')">
           <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Mesh Bodysuit" /></div>
           <div class="col-overlay"><h3>Mesh Bodysuit</h3><p>Discover &rarr;</p></div>
         </div>
-        <div class="col-card">
+        <div class="col-card" onclick="document.getElementById('m3').classList.add('open')">
           <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/Ac5a1b177c97a4e01bd32f77071b593609.png" alt="Lace Lingerie Sets" /></div>
           <div class="col-overlay"><h3>Lingerie Sets</h3><p>Discover &rarr;</p></div>
         </div>
-        <div class="col-card">
+        <div class="col-card" onclick="document.getElementById('m4').classList.add('open')">
           <div class="img-wrap"><img src="https://sc02.alicdn.com/kf/A395fb394ba9a47a294a290869b2cfe99B.png" alt="Silk Sleepwear" /></div>
           <div class="col-overlay"><h3>Silk Sleepwear</h3><p>Discover &rarr;</p></div>
         </div>
@@ -417,11 +472,48 @@
     </div>
   </div>
 
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Client Voices</p>
+        <h2>What Our Partners <em>Say</em></h2>
+        <div class="divider"><i>TRUSTED WORLDWIDE</i></div>
+      </div>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Velmora handled our private-label launch end to end. The lace quality and finishing exceeded our expectations &mdash; and sampling was incredibly fast."</p>
+          <div class="test-author"><div class="test-avatar">S</div><div><div class="name">Sophie M.</div><div class="role">Boutique Owner &middot; United Kingdom</div></div></div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Low MOQ let us test new styles without overcommitting. Communication was smooth and the custom packaging looked truly premium."</p>
+          <div class="test-author"><div class="test-avatar">D</div><div><div class="name">Daniel R.</div><div class="role">DTC Brand Founder &middot; United States</div></div></div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Reliable, discreet and consistent. We&rsquo;ve reordered three times &mdash; Velmora is now our go-to lingerie manufacturing partner."</p>
+          <div class="test-author"><div class="test-avatar">L</div><div><div class="name">Lena K.</div><div class="role">Wholesale Distributor &middot; Germany</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="container brands">
+      <p class="eyebrow">Trusted By Brands &amp; Retailers Across 30+ Countries</p>
+      <div class="brand-row">
+        <span class="brand-logo">Lumi&egrave;re</span>
+        <span class="brand-logo">Noir &amp; Co</span>
+        <span class="brand-logo">Velora</span>
+        <span class="brand-logo">&Eacute;toile</span>
+        <span class="brand-logo">Maison Rouge</span>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVE -->
   <section class="serve">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Trusted By</p>
         <h2>Who We <em>Serve</em></h2>
       </div>
       <div class="serve-grid">
@@ -546,6 +638,13 @@
     </div>
     <div class="copyright">漏 2026 VELMORA LACE 路 Luxury Lingerie Atelier 路 All Rights Reserved.</div>
   </footer>
+
+  <!-- LOOKBOOK MODALS -->
+  <div class="modal" id="m1"><div class="modal-box"><span class="modal-close" onclick="this.closest('.modal').classList.remove('open')">&times;</span><h3>Lace <em>Babydoll</em></h3><p class="sub">Soft lace, flattering cuts, custom packaging on request.</p><div class="modal-gallery"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Lace Babydoll"><img src="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" alt="Lace Babydoll"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Lace Babydoll"></div><a href="#contact" class="btn btn-gold" onclick="this.closest('.modal').classList.remove('open')">Request a Quote</a></div></div>
+  <div class="modal" id="m2"><div class="modal-box"><span class="modal-close" onclick="this.closest('.modal').classList.remove('open')">&times;</span><h3>Mesh <em>Bodysuit</em></h3><p class="sub">On-trend silhouettes for fast-moving collections.</p><div class="modal-gallery"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Mesh Bodysuit"><img src="https://sc02.alicdn.com/kf/Ac5a1b177c97a4e01bd32f77071b593609.png" alt="Mesh Bodysuit"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Mesh Bodysuit"></div><a href="#contact" class="btn btn-gold" onclick="this.closest('.modal').classList.remove('open')">Request a Quote</a></div></div>
+  <div class="modal" id="m3"><div class="modal-box"><span class="modal-close" onclick="this.closest('.modal').classList.remove('open')">&times;</span><h3>Lingerie <em>Sets</em></h3><p class="sub">Classic and premium looks for branded retail.</p><div class="modal-gallery"><img src="https://sc02.alicdn.com/kf/Ac5a1b177c97a4e01bd32f77071b593609.png" alt="Lingerie Sets"><img src="https://sc02.alicdn.com/kf/Aedd4f69743d74b82ade1a67d3ac0e74fA.png" alt="Lingerie Sets"><img src="https://sc02.alicdn.com/kf/A395fb394ba9a47a294a290869b2cfe99B.png" alt="Lingerie Sets"></div><a href="#contact" class="btn btn-gold" onclick="this.closest('.modal').classList.remove('open')">Request a Quote</a></div></div>
+  <div class="modal" id="m4"><div class="modal-box"><span class="modal-close" onclick="this.closest('.modal').classList.remove('open')">&times;</span><h3>Silk <em>Sleepwear</em></h3><p class="sub">Elegant sleepwear with full OEM/ODM support.</p><div class="modal-gallery"><img src="https://sc02.alicdn.com/kf/A395fb394ba9a47a294a290869b2cfe99B.png" alt="Silk Sleepwear"><img src="https://sc02.alicdn.com/kf/Ab5da12e51fa74df0a62314b8100ccd9ci.png" alt="Silk Sleepwear"><img src="https://sc02.alicdn.com/kf/Acae7d3b080934924b2e50c60651d98d2x.png" alt="Silk Sleepwear"></div><a href="#contact" class="btn btn-gold" onclick="this.closest('.modal').classList.remove('open')">Request a Quote</a></div></div>
+  <script>document.querySelectorAll('.modal').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('open');});});</script>
 
   <a href="https://wa.me/8615390957678" class="wa-float" target="_blank" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.376L1.05 31.3l6.13-1.96A15.9 15.9 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.31 22.594c-.386 1.09-1.92 1.994-3.142 2.258-.836.178-1.928.32-5.606-1.204-4.706-1.95-7.736-6.732-7.972-7.042-.226-.31-1.902-2.532-1.902-4.83s1.17-3.43 1.586-3.898c.342-.386.746-.562 1.198-.562.146 0 .278.008.396.014.342.014.514.034.74.574.282.674.964 2.336 1.046 2.508.084.172.166.404.05.638-.108.24-.204.346-.376.546-.172.2-.336.354-.508.568-.156.186-.334.388-.136.726.198.33.882 1.454 1.894 2.356 1.306 1.164 2.378 1.524 2.756 1.682.282.118.616.09.82-.124.26-.276.578-.736.902-1.19.23-.324.522-.364.83-.25.31.108 1.964.926 2.302 1.094.338.17.562.252.646.394.084.146.084.836-.302 1.926z"/></svg>
